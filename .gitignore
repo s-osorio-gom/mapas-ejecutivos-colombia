@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+ejemplo/salida/
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+*.gpkg

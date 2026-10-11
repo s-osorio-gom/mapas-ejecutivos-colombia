@@ -1,0 +1,28 @@
+name: pruebas
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      # geopandas entra con el extra `territorial` para probar la capa de
+      # departamentos sobre un shapefile ficticio que genera la propia prueba.
+      - run: pip install -e ".[territorial,dev]"
+      - name: Estilo
+        run: ruff check .
+      - name: Pruebas
+        run: pytest -q
+      - name: Mapa de ejemplo y validación contra la base
+        run: python ejemplo/demo.py

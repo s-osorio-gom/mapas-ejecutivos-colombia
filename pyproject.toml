@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mapas-ejecutivos-colombia"
+dynamic = ["version"]
+description = "Mapas de puntos en un solo archivo HTML sobre cartografía oficial del DANE, con validación contra la base."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "folium>=0.15",
+]
+
+[project.optional-dependencies]
+# Solo para las capas territoriales (shapefiles del DANE).
+territorial = ["geopandas>=0.14"]
+dev = ["pytest>=7", "ruff>=0.5"]
+
+[tool.setuptools]
+packages = ["mapa_ejecutivo"]
+
+[tool.setuptools.dynamic]
+version = { attr = "mapa_ejecutivo.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# Selección explícita: el conjunto por defecto cambia entre versiones de ruff.
+select = ["E", "F", "W", "I", "B", "UP", "RUF"]
+# La raya «–» y las comillas «» de las etiquetas son tipografía española, no errores.
+ignore = ["RUF001", "RUF002", "RUF003"]
