@@ -1,5 +1,7 @@
 # Mapas ejecutivos de Colombia
 
+[![pruebas](https://github.com/s-osorio-gom/mapas-ejecutivos-colombia/actions/workflows/pruebas.yml/badge.svg)](https://github.com/s-osorio-gom/mapas-ejecutivos-colombia/actions/workflows/pruebas.yml)
+
 Librería para producir mapas de puntos **presentables a un comité**, en un solo
 archivo HTML que abre con doble clic y se manda por correo. Folium sobre
 cartografía oficial del DANE, escala secuencial de un tono, leyenda con
